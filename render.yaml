@@ -1,0 +1,26 @@
+# Blueprint de Render: New → Blueprint → seleccionar el repositorio.
+# Las claves se cargan en el panel (sync: false), nunca en el repositorio.
+services:
+  - type: web
+    name: reto-02-agente-contratos
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      # Gemini (capa gratuita). Para Anthropic: LLM_PROVIDER=anthropic, LLM_MODEL=claude-sonnet-5-5 y ANTHROPIC_API_KEY.
+      - key: LLM_PROVIDER
+        value: gemini
+      - key: LLM_MODEL
+        value: gemini-3.6-flash
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: ACCESS_KEY
+        sync: false
+      - key: MAX_ITERACIONES
+        value: "25"
+      - key: SESSION_MAX_TOKENS
+        value: "400000"

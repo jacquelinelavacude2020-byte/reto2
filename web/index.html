@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Registro de contratos · Periferia IT Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='5' y='3' width='22' height='26' rx='2' fill='%231F6B4F'/><path d='M10 11h12M10 16h12M10 21h7' stroke='white' stroke-width='2'/></svg>">
+</head>
+<body>
+  <header class="barra">
+    <div class="marca">
+      <strong>Registro de contratos</strong>
+      <span class="sub">Buzón contratos@periferia-ficticia.com</span>
+    </div>
+    <div class="estado" id="estado" aria-live="polite">Conectando…</div>
+    <div class="acciones">
+      <button type="button" class="btn-sec" id="btn-panel" aria-controls="panel" aria-expanded="false">Maestro y alertas</button>
+      <button type="button" class="btn-sec" id="btn-nueva">Nueva conversación</button>
+      <button type="button" class="btn-sec" id="btn-reset" title="Borra out/ para repetir la demo desde cero">Reiniciar datos</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="chat" aria-label="Conversación con el agente">
+      <div class="historial" id="historial" aria-live="polite">
+        <div class="vacio" id="vacio">
+          <h1>Procesa el buzón y deja el maestro al día.</h1>
+          <p>El agente lee cada correo, extrae los datos del contrato, detecta duplicados y otrosíes, y te pregunta antes de registrar cualquier dato dudoso.</p>
+          <button type="button" class="sugerencia" data-prompt="Procesa el buzón de contratos con fecha de hoy 2026-09-03. Registra lo que esté limpio, muéstrame lo que requiere revisión campo por campo y termina con el reporte de alertas. No registres nada dudoso sin preguntarme.">
+            <span class="sug-titulo">Procesar el buzón con corte al 2026-09-03</span>
+            <span class="sug-texto">Registra lo limpio, muestra lo dudoso campo por campo y genera las alertas.</span>
+          </button>
+          <button type="button" class="sugerencia" data-prompt="¿Qué contratos vencen en los próximos 60 días y qué pólizas siguen pendientes? Usa como fecha de hoy 2026-09-03.">
+            <span class="sug-titulo">Ver vencimientos y pólizas pendientes</span>
+            <span class="sug-texto">Consulta el maestro actual sin registrar nada.</span>
+          </button>
+        </div>
+      </div>
+
+      <form class="entrada" id="form" autocomplete="off">
+        <label for="mensaje" class="oculto">Mensaje para el agente</label>
+        <textarea id="mensaje" rows="2" maxlength="4000" placeholder="Escribe una instrucción, p. ej. «procesa el buzón con fecha de hoy 2026-09-03»"></textarea>
+        <button type="submit" class="btn-pri" id="btn-enviar">Enviar</button>
+      </form>
+    </section>
+
+    <aside class="panel" id="panel" aria-label="Maestro y alertas">
+      <div class="pestanas" role="tablist">
+        <button type="button" role="tab" aria-selected="true" data-tab="maestro" id="tab-maestro">Maestro</button>
+        <button type="button" role="tab" aria-selected="false" data-tab="alertas" id="tab-alertas">Alertas</button>
+      </div>
+      <div class="panel-cuerpo" id="panel-cuerpo"></div>
+    </aside>
+  </main>
+
+  <dialog id="dlg-clave">
+    <form method="dialog" id="form-clave">
+      <h2>Clave de acceso</h2>
+      <p>Este enlace está protegido. Escribe la clave indicada en el README.</p>
+      <input id="input-clave" type="password" autocomplete="off" required>
+      <button type="submit" class="btn-pri">Entrar</button>
+    </form>
+  </dialog>
+
+  <script src="/app.js"></script>
+</body>
+</html>
